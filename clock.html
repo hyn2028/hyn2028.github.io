@@ -1,0 +1,110 @@
+
+<!--
+  - Full screen clock (12-hour)
+  - Copyright (c) 2020 Project Nayuki
+  - 
+  - https://www.nayuki.io/page/full-screen-clock-javascript
+  -->
+<!DOCTYPE html>
+<html style="height:100%; margin:0; padding:0">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>Clock</title>
+		<style type="text/css">
+			/* Customizable font and colors */
+			html {
+				background: linear-gradient(#e66465, #9198e5);
+				font-family: sans-serif;
+				/*font-weight: bold;*/
+				color: #FFFFFF;
+			}
+		</style>
+	</head>
+	
+	<body style="display:flex; height:100%; margin:0; padding:0; justify-content:center; align-items:center">
+		<span id="clocktext" style="font-kerning:none"></span>
+		
+		<script>
+			"use strict";
+			
+			var textElem = document.getElementById("clocktext");
+			var targetWidth = 0.9;  // Proportion of full screen width
+			var curFontSize = 20;  // Do not change
+			
+			function updateClock() {
+				var d = new Date();
+				var hour_24 = d.getHours();
+				var hour_12 = (hour_24 + 11) % 12 + 1;
+				
+				var s = "";
+				s += hour_24 >= 12 ? "PM" : "AM";
+				s += "\u00A0";
+				s += hour_12 < 10 ? "0" : "";
+				s += hour_12 + ":";
+				s += (10 > d.getMinutes() ? "0" : "") + d.getMinutes();
+				textElem.textContent = s;
+				updateBackgroundColor(d.getMinutes())
+				setTimeout(updateClock, 60000 - d.getTime() % 60000 + 100);
+			}
+			
+			function updateTextSize() {
+				for (var i = 0; 3 > i; i++) {  // Iterate for better better convergence
+					curFontSize *= targetWidth / (textElem.offsetWidth / textElem.parentNode.offsetWidth);
+					textElem.style.fontSize = curFontSize + "pt";
+				}
+			}
+
+			function updateBackgroundColor(min){
+				var min_ratio = min/60.0
+				var min_plus_ratio = (min+10)%60/60.0
+				var hsv1 = HSVtoRGB(min_ratio, 100.0/255, 130.0/255)
+				var hsv2 = HSVtoRGB(min_plus_ratio, 100.0/255, 85.0/255)
+				var ccode1 = RGBtoCode(hsv1.r, hsv1.g, hsv1.b)
+				var ccode2 = RGBtoCode(hsv2.r, hsv2.g, hsv2.b)
+				document.body.style.background = makeGrident(ccode1, ccode2)
+			}
+
+			function componentToHex(c) {
+				var hex = c.toString(16);
+				return hex.length == 1 ? "0" + hex : hex;
+			}
+
+			function RGBtoCode(r, g, b){
+				return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+			}
+
+			function makeGrident(start, stop){
+				return "linear-gradient(" + start + ", " + stop + ")"
+			}
+
+			function HSVtoRGB(h, s, v) {
+				var r, g, b, i, f, p, q, t;
+				if (arguments.length === 1) {
+					s = h.s, v = h.v, h = h.h;
+				}
+				i = Math.floor(h * 6);
+				f = h * 6 - i;
+				p = v * (1 - s);
+				q = v * (1 - f * s);
+				t = v * (1 - (1 - f) * s);
+				switch (i % 6) {
+					case 0: r = v, g = t, b = p; break;
+					case 1: r = q, g = v, b = p; break;
+					case 2: r = p, g = v, b = t; break;
+					case 3: r = p, g = q, b = v; break;
+					case 4: r = t, g = p, b = v; break;
+					case 5: r = v, g = p, b = q; break;
+				}
+				return {
+					r: Math.round(r * 255),
+					g: Math.round(g * 255),
+					b: Math.round(b * 255)
+				};
+			}
+			
+			updateClock();
+			updateTextSize();
+			window.addEventListener("resize", updateTextSize);
+		</script>
+	</body>
+</html>
