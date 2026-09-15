@@ -1,0 +1,298 @@
+:root {
+  --text: #222;
+  --muted: #5f7d76;
+  --line: #d7ece6;
+  --link: #0f766e;
+  --link-dark: #0b4f49;
+  --soft: #eefaf7;
+  --panel: #f4fbf9;
+  --bg: #fbfefd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.page {
+  display: grid;
+  grid-template-columns: 315px minmax(0, 1fr);
+  gap: 44px;
+  width: min(1080px, calc(100% - 40px));
+  margin: 36px auto 56px;
+}
+
+.sidebar {
+  position: sticky;
+  top: 28px;
+  align-self: start;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: linear-gradient(180deg, #ffffff 0%, var(--panel) 100%);
+  color: var(--muted);
+}
+
+.portrait {
+  display: block;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: 50%;
+  margin: 4px auto 20px;
+  border: 3px solid var(--panel);
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+.sidebar h1 {
+  margin: 0 0 6px;
+  color: var(--text);
+  font-size: 32px;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.position {
+  margin: 0 0 12px;
+  color: var(--text);
+}
+
+.sidebar p {
+  margin: 0 0 12px;
+}
+
+.email {
+  font-size: 14px;
+}
+
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.profile-links a {
+  padding: 3px 0;
+  color: var(--link-dark);
+  font-weight: 600;
+}
+
+.content {
+  min-width: 0;
+  padding-top: 8px;
+}
+
+section {
+  margin-bottom: 34px;
+}
+
+h2 {
+  margin: 0 0 13px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+h2::before {
+  display: inline-block;
+  width: 7px;
+  height: 18px;
+  margin-right: 9px;
+  border-radius: 999px;
+  background: var(--link);
+  content: "";
+  vertical-align: -2px;
+}
+
+h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+p {
+  margin: 0 0 12px;
+}
+
+.interest-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 4px 0 0;
+  list-style: none;
+}
+
+.interest-list li {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 5px 10px;
+  background: var(--soft);
+  color: #0e3b34;
+  font-size: 13px;
+}
+
+.news {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.news li {
+  margin-bottom: 6px;
+}
+
+.date {
+  color: var(--link-dark);
+  font-weight: 600;
+}
+
+.publication-note {
+  margin-top: -4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.paper {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 18px;
+  margin-bottom: 8px;
+  padding: 10px 14px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.paper.no-thumb {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.paper:hover {
+  border-color: var(--line);
+  background: #fbfffe;
+}
+
+.paper-thumb {
+  display: flex;
+  width: 170px;
+  height: 106px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--soft);
+  color: #444;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.paper-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.paper-thumb-contain img {
+  object-fit: contain;
+}
+
+.paper-body {
+  min-width: 0;
+}
+
+.pub-index {
+  margin-right: 6px;
+  color: var(--link-dark);
+  font-weight: 700;
+}
+
+.authors,
+.venue {
+  margin-bottom: 4px;
+}
+
+.venue {
+  color: var(--muted);
+}
+
+.paper-links {
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.paper-links a,
+.paper-links span {
+  margin-right: 12px;
+}
+
+.exp-entry {
+  margin-bottom: 16px;
+}
+
+.exp-entry:last-child {
+  margin-bottom: 0;
+}
+
+.exp-entry .role {
+  margin-bottom: 2px;
+}
+
+.exp-entry .period {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 760px) {
+  .page {
+    display: block;
+    width: min(100% - 28px, 720px);
+    margin-top: 24px;
+  }
+
+  .sidebar {
+    position: static;
+    margin-bottom: 34px;
+  }
+
+  .portrait {
+    width: 150px;
+    height: 150px;
+  }
+
+  .paper {
+    grid-template-columns: 1fr;
+  }
+
+  .paper-thumb {
+    width: min(100%, 260px);
+    height: 160px;
+  }
+}

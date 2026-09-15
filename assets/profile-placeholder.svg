@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" role="img" aria-labelledby="title desc">
+  <title id="title">Suhyeon Lee profile placeholder</title>
+  <desc id="desc">Initials placeholder for Suhyeon Lee.</desc>
+  <rect width="400" height="400" fill="#eefaf7"/>
+  <circle cx="200" cy="152" r="70" fill="#0f4c44"/>
+  <path d="M78 360c14-84 58-124 122-124s108 40 122 124" fill="#0f766e"/>
+  <text x="200" y="176" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="56" font-weight="800" fill="#ffffff">SL</text>
+</svg>
