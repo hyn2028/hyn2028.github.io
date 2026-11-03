@@ -270,6 +270,12 @@ p {
   font-size: 13px;
 }
 
+.exp-entry .project {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 @media (max-width: 760px) {
   .page {
     display: block;
