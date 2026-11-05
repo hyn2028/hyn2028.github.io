@@ -13,6 +13,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background: var(--bg);
@@ -199,6 +203,21 @@ p {
   background: #fbfffe;
 }
 
+.paper:target {
+  animation: paper-target-flash 2.2s ease-out;
+}
+
+@keyframes paper-target-flash {
+  0% {
+    background: var(--soft);
+    border-color: var(--link);
+  }
+  100% {
+    background: #ffffff;
+    border-color: transparent;
+  }
+}
+
 .paper-thumb {
   display: flex;
   width: 170px;
@@ -241,6 +260,8 @@ p {
 
 .venue {
   color: var(--muted);
+  font-weight: 400;
+  font-size: 15px;
 }
 
 .paper-links {
@@ -261,19 +282,18 @@ p {
   margin-bottom: 0;
 }
 
-.exp-entry .role {
+.exp-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 12px;
   margin-bottom: 2px;
-}
-
-.exp-entry .period {
-  color: var(--muted);
-  font-size: 13px;
 }
 
 .exp-entry .project {
   margin-top: 4px;
   color: var(--muted);
-  font-size: 13px;
 }
 
 @media (max-width: 760px) {
